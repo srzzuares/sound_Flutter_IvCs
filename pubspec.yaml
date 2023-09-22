@@ -40,7 +40,22 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "asset/icon/Logo.png"
+  web:
+    generate: true
+    image_path: "asset/icon/Logo.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "asset/icon/Logo.png"
+    icon_size: 48 # min:48, max:256, default: 48
 
+  # flutter pub run flutter_launcher_icons:main Run in Terminal for generate icons 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -59,26 +74,30 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-# To add assets to your application, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
-#   - images/a_dot_ham.jpeg
+  # To add assets to your application, add an assets section, like this:
+  assets:
+  - asset/fonts/Radley-Italic.ttf
+  - asset/sounds/Dubstep.mp3
+  - asset/sounds/Morning.mp3
+  - asset/sounds/Newer.mp3
+  - asset/sounds/Voxel.mp3
+  - asset/sounds/Whistle.mp3
 
-# An image asset can refer to one or more resolution-specific "variants", see
-# https://flutter.dev/assets-and-images/#resolution-aware
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
 
-# For details regarding adding assets from package dependencies, see
-# https://flutter.dev/assets-and-images/#from-packages
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
 
-# To add custom fonts to your application, add a fonts section here,
-# in this "flutter" section. Each entry in this list should have a
-# "family" key with the font family name, and a "fonts" key with a
-# list giving the asset and other descriptors for the font. For
-# example:
-# fonts:
-#   - family: Schyler
-#     fonts:
-#       - asset: fonts/Schyler-Regular.ttf
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+  - family: Rady
+    fonts:
+    - asset: asset/fonts/Radley-Italic.ttf
 #       - asset: fonts/Schyler-Italic.ttf
 #         style: italic
 #   - family: Trajan Pro

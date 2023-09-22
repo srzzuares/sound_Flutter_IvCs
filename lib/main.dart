@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:soundpool/soundpool.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,20 +13,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      title: 'CsSuar',
+      theme: ThemeData.dark(),
+      home:
+          const DefaultPage(title: 'inplementando Sonido en Flutter - 200527'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class DefaultPage extends StatefulWidget {
+  const DefaultPage({super.key, required this.title});
 
-// final player = AudioPlayer();
+  // final player = AudioPlayer();
   // AudioPlayer audioPlayer = AudioPlayer();
   //Source source = Source("assets/sounds/yamete_kudasai.mp3");
 
@@ -36,41 +37,47 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<DefaultPage> createState() => _DefaultPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _DefaultPageState extends State<DefaultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.black,
         title: Text(widget.title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              'Ejecutando Sonido desde el Boton flotante',
+              style: TextStyle(fontFamily: 'Rady', fontSize: 20),
             ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          // ignore: deprecated_member_use
+          Soundpool pool = Soundpool(streamType: StreamType.music);
+          int soundId = await rootBundle
+              .load("asset/sounds/Dubstep.mp3")
+              .then((ByteData soundData) {
+            return pool.load(soundData);
+          });
+          // ignore: unused_local_variable
+          int streamId = await pool.play(soundId);
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
             /* child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Center(
@@ -84,18 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ]),
           ),
         ), */
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
 
 
 /* Future<void> _soundbutton() async {
