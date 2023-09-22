@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'CsSuar',
       theme: ThemeData.dark(),
-      home:
-          const DefaultPage(title: 'inplementando Sonido en Flutter - 200527'),
+      home: const DefaultPage(title: 'Sonido en Flutter - 200527'),
     );
   }
 }
@@ -47,6 +46,7 @@ class _DefaultPageState extends State<DefaultPage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
