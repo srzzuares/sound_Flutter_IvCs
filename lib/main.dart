@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sound/src/seconScreen.dart';
 import 'package:soundpool/soundpool.dart';
 
 void main() {
@@ -56,6 +57,18 @@ class _DefaultPageState extends State<DefaultPage> {
               'Ejecutando Sonido desde el Boton flotante',
               style: TextStyle(fontFamily: 'Rady', fontSize: 20),
             ),
+            ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => secondScreen(
+                              title: 'CsSuar - 200527',
+                            )),
+                  );
+                },
+                icon: Icon(Icons.navigate_next),
+                label: Text('H'))
           ],
         ),
       ),
@@ -64,7 +77,7 @@ class _DefaultPageState extends State<DefaultPage> {
           // ignore: deprecated_member_use
           Soundpool pool = Soundpool(streamType: StreamType.music);
           int soundId = await rootBundle
-              .load("asset/sounds/Dubstep.mp3")
+              .load("asset/sounds/Newer.mp3")
               .then((ByteData soundData) {
             return pool.load(soundData);
           });
